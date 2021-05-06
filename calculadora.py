@@ -3,7 +3,6 @@ import gspread
 import os
 from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
-from google.oauth2.service_account import Credentials
 
 
 load_dotenv()
@@ -26,13 +25,17 @@ def requerimiento_inicial():
     except:
         print('Error en dato ingresado')
         requerimiento_inicial()
-    valores = {'celda_A': celda_A, 'celda_B': celda_B, 'numero_A': numero_A, 'numero_B': numero_B}
-    print(valores)
-    resultado = insertar_valores(valores)
+    valores = {'celda_A': celda_A, 'celda_B': celda_B, 'numero_A': numero_A, 'numero_B': numero_B, 'fin': celda_fin}
+    insertar_valores(valores)
+    print('El resultado de la suma es: ', obtener_resultado(valores))
 
 def insertar_valores(valores):
     sheet.update(valores.get('celda_A'), valores.get('numero_A'))
     sheet.update(valores.get('celda_B'), valores.get('numero_B'))
+    sheet.update_acell(valores.get('fin'), "=SUMA("+valores.get('celda_A')+';'+valores.get('celda_B')+')')
+
+def obtener_resultado(valores):
+    return sheet.acell(valores.get('fin')).value
 
 
 print('Calculadora usando Google Sheets')
