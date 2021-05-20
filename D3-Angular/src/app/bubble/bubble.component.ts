@@ -36,7 +36,6 @@ export class BubbleComponent implements OnInit {
   }
 
   private drawPlot(): void {
-    // Add X axis
     const x = d3.scaleLinear()
     .domain([2009, 2017])
     .range([ 0, this.width ]);
@@ -44,14 +43,12 @@ export class BubbleComponent implements OnInit {
     .attr("transform", "translate(0," + this.height + ")")
     .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-    // Add Y axis
     const y = d3.scaleLinear()
     .domain([0, 200000])
     .range([ this.height, 0]);
     this.svg.append("g")
     .call(d3.axisLeft(y));
 
-    // Add dots
     const dots = this.svg.append('g');
 
     dots.selectAll("dot")
