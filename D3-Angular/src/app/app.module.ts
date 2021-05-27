@@ -7,6 +7,7 @@ import { CascadeComponent } from './cascade/cascade.component';
 import { BubbleComponent } from './bubble/bubble.component';
 import { HeatmapComponent } from './heatmap/heatmap.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
