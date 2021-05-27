@@ -5,12 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CascadeComponent } from './cascade/cascade.component';
 import { BubbleComponent } from './bubble/bubble.component';
+import { HeatmapComponent } from './heatmap/heatmap.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CascadeComponent,
-    BubbleComponent
+    BubbleComponent,
+    HeatmapComponent
   ],
   imports: [
     BrowserModule,
